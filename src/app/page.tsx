@@ -1,7 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { useFormState } from 'react-dom';
+import { useActionState, useEffect, useState } from 'react';
 import { Shield, AlertTriangle } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
 import { analyzeFraud } from '@/app/actions';
@@ -19,7 +18,7 @@ const initialState: { data: FraudAnalysisResult | null, error: string | null } =
 };
 
 export default function Home() {
-  const [state, formAction] = useFormState(analyzeFraud, initialState);
+  const [state, formAction] = useActionState(analyzeFraud, initialState);
   const [isPending, setIsPending] = useState(false);
   const { toast } = useToast();
 
